@@ -131,8 +131,8 @@ keymap = [
 	{ on = [ "g", "<Space>" ], run = "cd --interactive",         desc = "Jump interactively" },
 	{ on = [ "g", "f" ],       run = "follow",                   desc = "Follow hovered symlink" },
 
-    { on = [ "g", "n", "p" ],  run = "cd //DXP4800-9181/personal_folder", desc = "personal_folder" },
-    { on = [ "g", "n", "P" ],  run = "cd //DXP4800-9181/Public",          desc = "Public" },
+	{ on = [ "g", "n", "p" ],  run = "cd //DXP4800-9181/personal_folder", desc = "personal_folder" },
+	{ on = [ "g", "n", "P" ],  run = "cd //DXP4800-9181/Public",          desc = "Public" },
 	{ on = [ "g", "n", "b" ],  run = "cd //DXP4800-9181/Backup",          desc = "Backup" },
 	{ on = [ "g", "n", "d" ],  run = "cd //DXP4800-9181/docker",          desc = "docker" },
 	{ on = [ "g", "n", "i" ],  run = "cd //DXP4800-9181/Immich",          desc = "Immich" },
@@ -383,3 +383,14 @@ keymap = [
 	# Filtering
 	{ on = "f", run = "filter", desc = "Filter help items" },
 ]
+
+# keymap.toml
+[[mgr.prepend_keymap]]
+on   = "-"
+run  = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = "+"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
