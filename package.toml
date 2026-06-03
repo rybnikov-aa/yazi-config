@@ -8,5 +8,27 @@ use = "yazi-rs/plugins:git"
 rev = "598cdb6"
 hash = "b94720e0ef40cb0e97093fabd9694775"
 
-[flavor]
-deps = []
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "0f9204b"
+hash = "5ebc8659108fcb68fe853e523115ed3c"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "0f9204b"
+hash = "e207c84b429a7d491cb11602cb2d3b3a"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-frappe"
+rev = "0f9204b"
+hash = "ba354c5b402b108c336a25d5de73316b"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-macchiato"
+rev = "0f9204b"
+hash = "fa7b78b7965b2065c48399d47144b35e"
+
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "8e6296f"
+hash = "49258e379077f4b0d2e62dfdb131c7d"
