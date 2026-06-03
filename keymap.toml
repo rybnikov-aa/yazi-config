@@ -131,6 +131,16 @@ keymap = [
 	{ on = [ "g", "<Space>" ], run = "cd --interactive",         desc = "Jump interactively" },
 	{ on = [ "g", "f" ],       run = "follow",                   desc = "Follow hovered symlink" },
 
+    { on = [ "g", "n", "p" ],  run = "cd //DXP4800-9181/personal_folder", desc = "personal_folder" },
+    { on = [ "g", "n", "P" ],  run = "cd //DXP4800-9181/Public",          desc = "Public" },
+	{ on = [ "g", "n", "b" ],  run = "cd //DXP4800-9181/Backup",          desc = "Backup" },
+	{ on = [ "g", "n", "d" ],  run = "cd //DXP4800-9181/docker",          desc = "docker" },
+	{ on = [ "g", "n", "i" ],  run = "cd //DXP4800-9181/Immich",          desc = "Immich" },
+	{ on = [ "g", "n", "n" ],  run = "cd //DXP4800-9181/Network",         desc = "Network" },
+	{ on = [ "g", "n", "S" ],  run = "cd //DXP4800-9181/Surveillance",    desc = "Surveillance" },
+	{ on = [ "g", "n", "s" ],  run = "cd //DXP4800-9181/Sync",            desc = "Sync" },
+	{ on = [ "g", "n", "t" ],  run = "cd //DXP4800-9181/Torrents",        desc = "Torrents" },
+
 	# Tabs
 	{ on = [ "t", "t" ], run = "tab_create --current",     desc = "Create a new tab in CWD" },
 	{ on = [ "t", "r" ], run = "tab_rename --interactive", desc = "Rename current tab" },
