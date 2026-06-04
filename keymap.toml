@@ -125,15 +125,18 @@ keymap = [
 
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",                     desc = "Go home" },
+	{ on = [ "g", "H" ],       run = "cd E:/Media",              desc = "Go home (media)" },
 	{ on = [ "g", "c" ],       run = "cd %APPDATA%/yazi/config", desc = "Go yazi config" },
-	{ on = [ "g", "d" ],       run = "cd ~/Downloads",           desc = "Go ~/Downloads" },
+	{ on = [ "g", "d" ],       run = "cd E:/Media/Downloads",    desc = "Go Downloads" },
+	{ on = [ "g", "m" ],       run = "cd E:/Media/Music",        desc = "Go Music" },
+	{ on = [ "g", "v" ],       run = "cd E:/Media/Videos",       desc = "Go Video" },
 	{ on = [ "g", "t" ],       run = "cd d:/Tools",			     desc = "Go tools" },
 	{ on = [ "g", "y" ],       run = "cd d:/Tools/yt-dlp",       desc = "Go yt-dlp" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive",         desc = "Jump interactively" },
 	{ on = [ "g", "f" ],       run = "follow",                   desc = "Follow hovered symlink" },
 
-	{ on = [ "g", "n", "p" ],  run = "cd //DXP4800-9181/personal_folder", desc = "personal_folder" },
-	{ on = [ "g", "n", "P" ],  run = "cd //DXP4800-9181/Public",          desc = "Public" },
+	{ on = [ "g", "n", "p" ],  run = "cd P:\\", desc = "personal_folder" },
+	{ on = [ "g", "n", "P" ],  run = "cd Q:\\",          desc = "Public" },
 	{ on = [ "g", "n", "b" ],  run = "cd //DXP4800-9181/Backup",          desc = "Backup" },
 	{ on = [ "g", "n", "d" ],  run = "cd //DXP4800-9181/docker",          desc = "docker" },
 	{ on = [ "g", "n", "i" ],  run = "cd //DXP4800-9181/Immich",          desc = "Immich" },

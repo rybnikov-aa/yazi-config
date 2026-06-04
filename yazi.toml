@@ -41,13 +41,12 @@ play = [
 	{ run = "open %s",                 desc = "Play", for = "macos" },
 	{ run = "termux-open %s1",         desc = "Play", for = "android" },
     
-	# Стандартное воспроизведение (с окном для музыки)
-    { run = "mpv %s1", orphan = true, for = "windows", desc = "Play with mpv" },
+    { run = "mpv %s1",      orphan = true, for = "windows", desc = "Play with mpv" },
+    { run = "mpc-be64 %s1", orphan = true, for = "windows", desc = "Play with mpc-be" },
 
-    # Воспроизведение всех выделенных файлов (mpv сделает плейлист)
-    { run = "mpv %s", orphan = true, for = "windows", desc = "Play selected as playlist" },
+    { run = "mpv %s",       orphan = true, for = "windows", desc = "Play selected as playlist with mpv" },
+    { run = "mpc-be64 %s",  orphan = true, for = "windows", desc = "Play selected as playlist with mpc-be" },
 	
-    # 5. Воспроизведение через плейер по умолчанию (без mpv, может открыться в браузере или другом приложении)
 	{ run = 'start "" %s1', desc = "Play windows default", for = "windows", orphan = true },
 
 	{ run = "mediainfo %s1; echo 'Press enter to exit'; read _", block = true, desc = "Show media info", for = "unix" },
@@ -74,6 +73,12 @@ download = [
 	{ run = "ya emit download --open %S", desc = "Download and open" },
 	{ run = "ya emit download %S",        desc = "Download" },
 ]
+view = [
+	{ run = "xdg-open %s1",    desc = "View", for = "linux", orphan = true },
+	{ run = "open %s",         desc = "View", for = "macos" },
+	{ run = "viewskater %s1",  desc = "View", for = "windows", orphan = true },
+	{ run = "termux-open %s1", desc = "View", for = "android" },
+]
 
 [open]
 rules = [
@@ -82,7 +87,7 @@ rules = [
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "image/*", use = [ "view", "reveal" ] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Code
