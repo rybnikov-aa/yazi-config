@@ -378,7 +378,10 @@ keymap = [
 	{ on = "f", run = "filter", desc = "Filter help items" },
 ]
 
-# keymap.toml
+# ****************************************************************
+# yazi-rs/plugins:toggle-pane
+# ****************************************************************
+
 [[mgr.prepend_keymap]]
 on   = "-"
 run  = "plugin toggle-pane min-preview"
@@ -389,42 +392,77 @@ on   = "+"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
 
-[[mgr.prepend_keymap]]
-on = [ "u", "a" ]
-run = "plugin yamb -- save"
-desc = "Add bookmark"
+# ****************************************************************
+# WhoSowSee/whoosh
+# ****************************************************************
 
 [[mgr.prepend_keymap]]
-on = [ "u", "g" ]
-run = "plugin yamb -- jump_by_key"
+on = "["
+run = "plugin whoosh jump_by_key"
 desc = "Jump bookmark by key"
 
+# Direct fuzzy search access
 [[mgr.prepend_keymap]]
-on = [ "u", "G" ]
-run = "plugin yamb -- jump_by_fzf"
-desc = "Jump bookmark by fzf"
+on = "}"
+run = "plugin whoosh jump_by_fzf"
+desc = "Direct fuzzy search for bookmarks"
+
+# Basic bookmark operations
+[[mgr.prepend_keymap]]
+on = [ "]", "a" ]
+run = "plugin whoosh save"
+desc = "Add bookmark (hovered file/directory)"
 
 [[mgr.prepend_keymap]]
-on = [ "u", "d" ]
-run = "plugin yamb -- delete_by_key"
+on = [ "]", "A" ]
+run = "plugin whoosh save_cwd"
+desc = "Add bookmark (current directory)"
+
+# Temporary bookmarks
+[[mgr.prepend_keymap]]
+on = [ "]", "t" ]
+run = "plugin whoosh save_temp"
+desc = "Add temporary bookmark (hovered file/directory)"
+
+[[mgr.prepend_keymap]]
+on = [ "]", "T" ]
+run = "plugin whoosh save_cwd_temp"
+desc = "Add temporary bookmark (current directory)"
+
+# Jump to bookmarks
+[[mgr.prepend_keymap]]
+on = "<A-k>"
+run = "plugin whoosh jump_key_k"
+desc = "Jump directly to bookmark with key k"
+
+[[mgr.prepend_keymap]]
+on = [ "]", "f" ]
+run = "plugin whoosh jump_by_fzf"
+desc = "Jump bookmark by fzf"
+
+# Delete bookmarks
+[[mgr.prepend_keymap]]
+on = [ "]", "d" ]
+run = "plugin whoosh delete_by_key"
 desc = "Delete bookmark by key"
 
 [[mgr.prepend_keymap]]
-on = [ "u", "D" ]
-run = "plugin yamb -- delete_by_fzf"
-desc = "Delete bookmark by fzf"
+on = [ "]", "D" ]
+run = "plugin whoosh delete_by_fzf"
+desc = "Delete bookmarks by fzf (use TAB to select multiple)"
 
 [[mgr.prepend_keymap]]
-on = [ "u", "A" ]
-run = "plugin yamb -- delete_all"
-desc = "Delete all bookmarks"
+on = [ "]", "C" ]
+run = "plugin whoosh delete_all"
+desc = "Delete all user bookmarks"
 
+# Rename bookmarks
 [[mgr.prepend_keymap]]
-on = [ "u", "r" ]
-run = "plugin yamb -- rename_by_key"
+on = [ "]", "r" ]
+run = "plugin whoosh rename_by_key"
 desc = "Rename bookmark by key"
 
 [[mgr.prepend_keymap]]
-on = [ "u", "R" ]
-run = "plugin yamb -- rename_by_fzf"
+on = [ "]", "R" ]
+run = "plugin whoosh rename_by_fzf"
 desc = "Rename bookmark by fzf"

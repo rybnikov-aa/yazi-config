@@ -8,19 +8,85 @@ require("git"):setup {
 	order = 1500,
 }
 
--- You can configure your bookmarks by lua language
-local bookmarks = {}
+-- You can also configure bookmarks with key arrays
+local bookmarks = {
+  { tag = "Documents", path = "~/Documents", key = { "h", "D" } },
+  { tag = "Downloads", path = "~/Downloads", key = { "h", "d" } },
+  { tag = "Music",     path = "~/Music",     key = { "h", "m" } },
+  { tag = "Pictures",  path = "~/Pictures",  key = { "h", "p" } },
+  { tag = "Videos",    path = "~/Videos",    key = { "h", "v" } },
 
-require("yamb"):setup {
-  -- Optional, the path ending with path seperator represents folder.
+  { tag = "NAS - Personal",     path = [[\\DXP4800-9181\personal_folder\]], key = { "n", "d" } },
+  { tag = "NAS - Public",       path = [[\\DXP4800-9181\Public\]],          key = { "n", "P" } },
+  { tag = "NAS - Torrents",     path = [[\\DXP4800-9181\Torrents\]],        key = { "n", "t" } },
+  { tag = "NAS - Sync",         path = [[\\DXP4800-9181\Sync\]],            key = { "n", "s" } },
+  { tag = "NAS - Surveillance", path = [[\\DXP4800-9181\Surveillance\]],    key = { "n", "S" } },
+  { tag = "NAS - Network",      path = [[\\DXP4800-9181\Network\]],         key = { "n", "n" } },
+  { tag = "NAS - Immich",       path = [[\\DXP4800-9181\Immich\]],          key = { "n", "i" } },
+  { tag = "NAS - docker",       path = [[\\DXP4800-9181\docker\]],          key = { "n", "d" } },
+  { tag = "NAS - Backup",       path = [[\\DXP4800-9181\Backup\]],          key = { "n", "b" } },
+}
+
+-- Windows-specific bookmarks
+if ya.target_family() == "windows" then
+  local home_path = os.getenv("USERPROFILE")
+  table.insert(bookmarks, {
+    tag = "Scoop Local",
+    path = os.getenv("SCOOP") or (home_path .. "\\scoop"),
+    key = { "p" }
+  })
+  table.insert(bookmarks, {
+    tag = "Scoop Global",
+    path = os.getenv("SCOOP_GLOBAL") or "C:\\ProgramData\\scoop",
+    key = { "P" }
+  })
+end
+
+require("whoosh"):setup {
+  -- Configuration bookmarks (cannot be deleted through plugin)
   bookmarks = bookmarks,
-  -- Optional, recieve notification everytime you jump.
-  jump_notify = true,
-  -- Optional, the cli of fzf.
-  cli = "fzf",
-  -- Optional, a string used for randomly generating keys, where the preceding characters have higher priority.
+
+  -- Notification settings
+  jump_notify = false,
+
+  -- Key generation for auto-assigning bookmark keys
   keys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  -- Optional, the path of bookmarks
-  path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark") or
-        (os.getenv("HOME") .. "/.config/yazi/bookmark"),
+
+  -- Configure the built-in menu action hotkeys
+  -- false - hide menu item
+  special_keys = {
+    create_temp = "<Enter>",         -- Create a temporary bookmark from the menu
+    fuzzy_search = "<Space>",        -- Launch fuzzy search (fzf)
+    history = "<Tab>",               -- Open directory history
+    previous_dir = "<Backspace>",    -- Jump back to the previous directory
+    project_root = "-",              -- Jump to the current Git repository root
+  },
+
+  -- File path for storing user bookmarks
+  bookmarks_path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\plugins\\whoosh.yazi\\bookmarks") or
+         (os.getenv("HOME") .. "/.config/yazi/plugins/whoosh.yazi/bookmarks"),
+
+  -- Replace home directory with "~"
+  home_alias_enabled = true,                            -- Toggle home aliasing in displays
+
+  -- Path truncation in navigation menu
+  path_truncate_enabled = false,                        -- Enable/disable path truncation
+  path_max_depth = 3,                                   -- Maximum path depth before truncation
+
+  -- Path truncation in fuzzy search (fzf)
+  fzf_path_truncate_enabled = false,                    -- Enable/disable path truncation in fzf
+  fzf_path_max_depth = 5,                               -- Maximum path depth before truncation in fzf
+
+  -- Long folder name truncation
+  path_truncate_long_names_enabled = false,             -- Enable in navigation menu
+  fzf_path_truncate_long_names_enabled = false,         -- Enable in fzf
+  path_max_folder_name_length = 20,                     -- Max length in navigation menu
+  fzf_path_max_folder_name_length = 20,                 -- Max length in fzf
+
+  -- History directory settings
+  history_size = 10,                                    -- Number of directories in history (default 10)
+  history_fzf_path_truncate_enabled = false,            -- Enable/disable path truncation by depth for history
+  history_fzf_path_max_depth = 5,                       -- Maximum path depth before truncation for history (default 5)
+  history_fzf_path_truncate_long_names_enabled = false, -- Enable/disable long folder name truncation for history
+  history_fzf_path_max_folder_name_length = 30,         -- Maximum length for folder names in history (default 30)
 }

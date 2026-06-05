@@ -14,9 +14,9 @@ rev = "598cdb6"
 hash = "77c0dd89349f367282c5ea1999754915"
 
 [[plugin.deps]]
-use = "h-hg/yamb"
-rev = "5f2e22e"
-hash = "699fe07e0d2d1b4af8dafb84168eeb04"
+use = "WhoSowSee/whoosh"
+rev = "ec2e6f7"
+hash = "957354359d2850e7efd7c60fc3f2bc87"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
