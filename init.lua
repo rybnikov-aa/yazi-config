@@ -16,31 +16,48 @@ local bookmarks = {
   { tag = "Pictures",  path = "~/Pictures",  key = { "h", "p" } },
   { tag = "Videos",    path = "~/Videos",    key = { "h", "v" } },
 
-  { tag = "NAS - Personal",     path = [[\\DXP4800-9181\personal_folder\]], key = { "n", "d" } },
+  { tag = "NAS - Personal",     path = [[\\DXP4800-9181\personal_folder\]], key = { "n", "p" } },
   { tag = "NAS - Public",       path = [[\\DXP4800-9181\Public\]],          key = { "n", "P" } },
-  { tag = "NAS - Torrents",     path = [[\\DXP4800-9181\Torrents\]],        key = { "n", "t" } },
+  { tag = "NAS - Backup",       path = [[\\DXP4800-9181\Backup\]],          key = { "n", "b" } },
+  { tag = "NAS - Immich",       path = [[\\DXP4800-9181\Immich\]],          key = { "n", "i" } },
+  { tag = "NAS - Network",      path = [[\\DXP4800-9181\Network\]],         key = { "n", "n" } },
   { tag = "NAS - Sync",         path = [[\\DXP4800-9181\Sync\]],            key = { "n", "s" } },
   { tag = "NAS - Surveillance", path = [[\\DXP4800-9181\Surveillance\]],    key = { "n", "S" } },
-  { tag = "NAS - Network",      path = [[\\DXP4800-9181\Network\]],         key = { "n", "n" } },
-  { tag = "NAS - Immich",       path = [[\\DXP4800-9181\Immich\]],          key = { "n", "i" } },
+  { tag = "NAS - Torrents",     path = [[\\DXP4800-9181\Torrents\]],        key = { "n", "t" } },
   { tag = "NAS - docker",       path = [[\\DXP4800-9181\docker\]],          key = { "n", "d" } },
-  { tag = "NAS - Backup",       path = [[\\DXP4800-9181\Backup\]],          key = { "n", "b" } },
 }
 
 -- Windows-specific bookmarks
 if ya.target_family() == "windows" then
   local home_path = os.getenv("USERPROFILE")
   table.insert(bookmarks, {
-    tag = "Scoop Local",
-    path = os.getenv("SCOOP") or (home_path .. "\\scoop"),
-    key = { "p" }
-  })
-  table.insert(bookmarks, {
     tag = "Scoop Global",
     path = os.getenv("SCOOP_GLOBAL") or "C:\\ProgramData\\scoop",
     key = { "P" }
   })
+  table.insert(bookmarks, {
+    tag = "Scoop Local",
+    path = os.getenv("SCOOP") or (home_path .. "\\scoop"),
+    key = { "p" }
+  })
+
+  -- Add system drives
+  local handle = io.popen('powershell -Command "(Get-PSDrive -PSProvider FileSystem).Name"')
+  if handle then
+    for line in handle:lines() do
+      local drive = line:gsub("%s+", "")
+      if drive ~= "" then
+        table.insert(bookmarks, {
+          tag = "Goto disk " .. drive .. ":\\",
+          path = drive .. ":\\",
+          key = { "d", drive:lower() }
+        })
+      end
+    end
+    handle:close()
+  end
 end
+
 
 require("whoosh"):setup {
   -- Configuration bookmarks (cannot be deleted through plugin)
