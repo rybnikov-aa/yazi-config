@@ -397,35 +397,35 @@ desc = "Maximize or restore the preview pane"
 # ****************************************************************
 
 [[mgr.prepend_keymap]]
-on = "["
+on = "b"
 run = "plugin whoosh jump_by_key"
 desc = "Jump bookmark by key"
 
 # Direct fuzzy search access
 [[mgr.prepend_keymap]]
-on = "}"
+on = "C-b"
 run = "plugin whoosh jump_by_fzf"
 desc = "Direct fuzzy search for bookmarks"
 
 # Basic bookmark operations
 [[mgr.prepend_keymap]]
-on = [ "]", "a" ]
+on = [ "B", "a" ]
 run = "plugin whoosh save"
 desc = "Add bookmark (hovered file/directory)"
 
 [[mgr.prepend_keymap]]
-on = [ "]", "A" ]
+on = [ "B", "A" ]
 run = "plugin whoosh save_cwd"
 desc = "Add bookmark (current directory)"
 
 # Temporary bookmarks
 [[mgr.prepend_keymap]]
-on = [ "]", "t" ]
+on = [ "B", "t" ]
 run = "plugin whoosh save_temp"
 desc = "Add temporary bookmark (hovered file/directory)"
 
 [[mgr.prepend_keymap]]
-on = [ "]", "T" ]
+on = [ "B", "T" ]
 run = "plugin whoosh save_cwd_temp"
 desc = "Add temporary bookmark (current directory)"
 
@@ -436,33 +436,33 @@ run = "plugin whoosh jump_key_k"
 desc = "Jump directly to bookmark with key k"
 
 [[mgr.prepend_keymap]]
-on = [ "]", "f" ]
+on = [ "B", "f" ]
 run = "plugin whoosh jump_by_fzf"
 desc = "Jump bookmark by fzf"
 
 # Delete bookmarks
 [[mgr.prepend_keymap]]
-on = [ "]", "d" ]
+on = [ "B", "d" ]
 run = "plugin whoosh delete_by_key"
 desc = "Delete bookmark by key"
 
 [[mgr.prepend_keymap]]
-on = [ "]", "D" ]
+on = [ "B", "D" ]
 run = "plugin whoosh delete_by_fzf"
 desc = "Delete bookmarks by fzf (use TAB to select multiple)"
 
 [[mgr.prepend_keymap]]
-on = [ "]", "C" ]
+on = [ "B", "C" ]
 run = "plugin whoosh delete_all"
 desc = "Delete all user bookmarks"
 
 # Rename bookmarks
 [[mgr.prepend_keymap]]
-on = [ "]", "r" ]
+on = [ "B", "r" ]
 run = "plugin whoosh rename_by_key"
 desc = "Rename bookmark by key"
 
 [[mgr.prepend_keymap]]
-on = [ "]", "R" ]
+on = [ "B", "R" ]
 run = "plugin whoosh rename_by_fzf"
 desc = "Rename bookmark by fzf"
