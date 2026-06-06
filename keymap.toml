@@ -72,8 +72,14 @@ keymap = [
 	{ on = "<C-->",     run = "hardlink",                    desc = "Hardlink yanked files" },
 	{ on = "Y",         run = "unyank",                      desc = "Cancel the yank status" },
 	{ on = "X",         run = "unyank",                      desc = "Cancel the yank status" },
+
 	{ on = "d",         run = "remove",                      desc = "Trash selected files" },
 	{ on = "D",         run = "remove --permanently",        desc = "Permanently delete selected files" },
+
+	{ on = "<Delete>",   run = "remove",                      desc = "Trash selected files" },
+	{ on = "<S-Delete>", run = "remove --permanently",        desc = "Permanently delete selected files" },
+
+
 	{ on = "a",         run = "create",                      desc = "Create a file (ends with / for directories)" },
 	{ on = "r",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
 	{ on = ";",         run = "shell --interactive",         desc = "Run a shell command" },
@@ -125,13 +131,7 @@ keymap = [
 
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",                     desc = "Go home" },
-	{ on = [ "g", "H" ],       run = "cd E:/Media",              desc = "Go home (media)" },
 	{ on = [ "g", "c" ],       run = "cd %APPDATA%/yazi/config", desc = "Go yazi config" },
-	{ on = [ "g", "d" ],       run = "cd E:/Media/Downloads",    desc = "Go Downloads" },
-	{ on = [ "g", "m" ],       run = "cd E:/Media/Music",        desc = "Go Music" },
-	{ on = [ "g", "v" ],       run = "cd E:/Media/Videos",       desc = "Go Video" },
-	{ on = [ "g", "t" ],       run = "cd d:/Tools",			     desc = "Go tools" },
-	{ on = [ "g", "y" ],       run = "cd d:/Tools/yt-dlp",       desc = "Go yt-dlp" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive",         desc = "Jump interactively" },
 	{ on = [ "g", "f" ],       run = "follow",                   desc = "Follow hovered symlink" },
 

@@ -33,12 +33,12 @@ if ya.target_family() == "windows" then
   table.insert(bookmarks, {
     tag = "Scoop Global",
     path = os.getenv("SCOOP_GLOBAL") or "C:\\ProgramData\\scoop",
-    key = { "P" }
+    key = { "<C-S>" }
   })
   table.insert(bookmarks, {
     tag = "Scoop Local",
     path = os.getenv("SCOOP") or (home_path .. "\\scoop"),
-    key = { "p" }
+    key = { "<C-s>" }
   })
 
   -- Add system drives
@@ -107,3 +107,6 @@ require("whoosh"):setup {
   history_fzf_path_truncate_long_names_enabled = false, -- Enable/disable long folder name truncation for history
   history_fzf_path_max_folder_name_length = 30,         -- Maximum length for folder names in history (default 30)
 }
+
+-- Загрузка плагина для подсветки недавних файлов
+require("recent-color"):setup()
