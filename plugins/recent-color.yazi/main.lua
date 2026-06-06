@@ -3,9 +3,9 @@
 local function setup(_, opts)
 	local config = {
 		hours = 24,
-		recent_file_fg = "#98c379",
-		recent_dir_fg = "#98c379",
-		recent_dir_bg = "#2c3e22",
+		-- recent_file_fg = "#ffc400",
+		-- recent_dir_fg = "#ffc400",
+		-- recent_dir_bg = "#2c3e22",
 		bold = true,
 		-- Символ-индикатор для недавних файлов
 		recent_sign = "●",
@@ -17,8 +17,18 @@ local function setup(_, opts)
 		end
 	end
 
-	local recent_file_style = ui.Style():fg(config.recent_file_fg)
-	local recent_dir_style = ui.Style():fg(config.recent_dir_fg):bg(config.recent_dir_bg)
+	local recent_file_style = ui.Style()
+	if config.recent_file_fg then
+		recent_file_style = recent_file_style:fg(config.recent_file_fg)
+	end
+
+	local recent_dir_style = ui.Style()
+	if config.recent_dir_fg then
+		recent_dir_style = recent_dir_style:fg(config.recent_dir_fg)
+	end
+	if config.recent_dir_bg then
+		recent_dir_style = recent_dir_style:bg(config.recent_dir_bg)
+	end
 
 	Linemode:children_add(function(self)
 		local file = self._file
@@ -35,15 +45,19 @@ local function setup(_, opts)
 		local threshold = config.hours * 60 * 60
 
 		if (now - mt) < threshold then
+			if file.is_hovered then
+				return ui.Line { " ", config.recent_sign }
+			end
+
 			local style = file.cha.is_dir and recent_dir_style or recent_file_style
 			return ui.Line {
-				ui.Span(config.recent_sign):style(style),
 				" ",
+				ui.Span(config.recent_sign):style(style),
 			}
 		end
 
 		return ""
-	end, 500)
+	end, 2000)
 end
 
 return { setup = setup }
