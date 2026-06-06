@@ -3,8 +3,8 @@
 local function setup(_, opts)
 	local config = {
 		hours = 24,
-		-- recent_file_fg = "#ffc400",
-		-- recent_dir_fg = "#ffc400",
+		recent_file_fg = "#ffc400",
+		recent_dir_fg = "#ffc400",
 		-- recent_dir_bg = "#2c3e22",
 		bold = true,
 		-- Символ-индикатор для недавних файлов
@@ -57,7 +57,7 @@ local function setup(_, opts)
 		end
 
 		return ""
-	end, 2000)
+	end, 1600)
 end
 
 return { setup = setup }
