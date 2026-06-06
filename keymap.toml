@@ -403,7 +403,7 @@ desc = "Jump bookmark by key"
 
 # Direct fuzzy search access
 [[mgr.prepend_keymap]]
-on = "C-b"
+on = "<C-b>"
 run = "plugin whoosh jump_by_fzf"
 desc = "Direct fuzzy search for bookmarks"
 
