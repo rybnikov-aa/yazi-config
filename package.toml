@@ -18,6 +18,11 @@ use = "WhoSowSee/whoosh"
 rev = "ec2e6f7"
 hash = "957354359d2850e7efd7c60fc3f2bc87"
 
+[[plugin.deps]]
+use = "MasouShizuka/projects"
+rev = "112a270"
+hash = "af9b6ae1379489638ddf524695af38a"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
 rev = "0f9204b"
