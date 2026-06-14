@@ -41,21 +41,6 @@ if ya.target_family() == "windows" then
     key = { "<C-s>" }
   })
 
-  -- Add system drives
-  local handle = io.popen('powershell -Command "(Get-PSDrive -PSProvider FileSystem).Name"')
-  if handle then
-    for line in handle:lines() do
-      local drive = line:gsub("%s+", "")
-      if drive ~= "" then
-        table.insert(bookmarks, {
-          tag = "Goto disk " .. drive .. ":\\",
-          path = drive .. ":\\",
-          key = { "d", drive:lower() }
-        })
-      end
-    end
-    handle:close()
-  end
 end
 
 

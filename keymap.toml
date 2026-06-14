@@ -143,6 +143,9 @@ keymap = [
 	{ on = [ "g", "<Space>" ], run = "cd --interactive",         desc = "Jump interactively" },
 	{ on = [ "g", "f" ],       run = "follow",                   desc = "Follow hovered symlink" },
 
+	# Drives
+	{ on = "e", run = "plugin drives", desc = "Pick a drive" },
+
 	# Tabs
 	{ on = [ "t", "t" ], run = "tab_create --current",     desc = "Create a new tab in CWD" },
 	{ on = [ "t", "r" ], run = "tab_rename --interactive", desc = "Rename current tab" },

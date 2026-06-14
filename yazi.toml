@@ -103,7 +103,7 @@ rules = [
 ]
 
 [tasks]
-file_workers     = 3
+file_workers     = 2
 plugin_workers   = 5
 fetch_workers    = 5
 preload_workers  = 2
